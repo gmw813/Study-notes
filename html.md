@@ -159,3 +159,35 @@ Note: 实体名称对大小写敏感！
 ×	乘号	&times;	&#215;
 ÷	除号	&divide;	&#247;
 ```
+## HTML-swiper组件
+```
+要点：swiper宽高应设置为100%；swiper-item中的image也应设置宽高（解决图片不显示问题）；
+问题：组件中使用swiper时swiper-item不能使用数组循环
+```
+```
+<!--Component/swiper.wxml-->
+<view class="container">
+ <swiper indicator-dots="true" autoplay="{{autoplay}}" >
+    <!-- <block wx:for="{{imgUrls}}" wx:key="*this" > -->
+     <swiper-item>
+      <image style="width='355' height='150'" src="http://img5.imgtn.bdimg.com/it/u=3008142408,2229729459&fm=26&gp=0.jpg" ></image>
+     </swiper-item>
+       <swiper-item>
+      <image style="width='355' height='150'" src="http://img5.imgtn.bdimg.com/it/u=3008142408,2229729459&fm=26&gp=0.jpg" ></image>
+     </swiper-item>
+       <swiper-item>
+      <image style="width='355' height='150'" src="http://img5.imgtn.bdimg.com/it/u=3008142408,2229729459&fm=26&gp=0.jpg" ></image>
+     </swiper-item>
+    <!-- </block> -->
+   </swiper>
+</view>
+```
+```
+/* Component/swiper.wxss */
+.container{
+  width: 100%;
+ }
+ .container swiper{
+  width: 100%;
+ }
+```
