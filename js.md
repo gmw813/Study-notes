@@ -40,36 +40,36 @@ confirm
 对 undefined 进行数字型转换时，输出结果为 NaN，而非 0。
 对 "0" 和只有空格的字符串（比如：" "）进行布尔型转换时，输出结果为 true。
 ```
-## 运算符
+## 数组方法
 ```
-求幂 **
-求幂运算 a ** b 是 a 乘以自身 b 次。
-eg:
-alert( 2 ** 2 ); // 4  (2 * 2，自乘 2 次)
-alert( 2 ** 3 ); // 8  (2 * 2 * 2，自乘 3 次)
-alert( 4 ** (1/2) ); // 2（1/2 次方与平方根相同)
-alert( 8 ** (1/3) ); // 2（1/3 次方与立方根相同)
-```
-```
-'+'注意：只要任意一个运算元是字符串，那么另一个运算元也将被转化为字符串。
-alert( '1' + 2 ); // "12"
-alert( 2 + '1' ); // "21"
-加号 + 应用于单个值，对数字没有任何作用。但是如果运算元不是数字，加号 + 则会将其转化为数字。
-// 对数字无效
-let x = 1;
-alert( +x ); // 1
+添加/删除元素：
+push(...items) —— 向尾端添加元素，
+pop() —— 从尾端提取一个元素，
+shift() —— 从首端提取一个元素，
+unshift(...items) —— 向首端添加元素，
+splice(pos, deleteCount, ...items) —— 从 index 开始删除 deleteCount 个元素，并在当前位置插入 items。
+slice(start, end) —— 创建一个新数组，将从位置 start 到位置 end（但不包括 end）的元素复制进去。
+concat(...items) —— 返回一个新数组：复制当前数组的所有元素，并向其中添加 items。如果 items 中的任意一项是一个数组，那么就取其元素。
 
-let y = -2;
-alert( +y ); // -2
+搜索元素：
+indexOf/lastIndexOf(item, pos) —— 从位置 pos 开始搜索 item，搜索到则返回该项的索引，否则返回 -1。
+includes(value) —— 如果数组有 value，则返回 true，否则返回 false。
+find/filter(func) —— 通过 func 过滤元素，返回使 func 返回 true 的第一个值/所有值。
+findIndex 和 find 类似，但返回索引而不是值。
 
-// 转化非数字
-alert( +true ); // 1
-alert( +"" );   // 0
-优先级：一元运算符优先级高于二元运算符
-自增/自减只能应用于变量。（比如 5++）则会报错。
-```
-## 箭头函数
-```
-不带花括号：(...args) => expression — 右侧是一个表达式：函数计算表达式并返回其结果。
-带花括号：(...args) => { body } — 花括号允许我们在函数中编写多个语句，但是我们需要显式地 return 来返回一些内容。
+遍历元素：
+forEach(func) —— 对每个元素都调用 func，不返回任何内容。
+转换数组：
+map(func) —— 根据对每个元素调用 func 的结果创建一个新数组。
+sort(func) —— 对数组进行原位（in-place）排序，然后返回它。
+reverse() —— 原位（in-place）反转数组，然后返回它。
+split/join —— 将字符串转换为数组并返回。
+reduce(func, initial) —— 通过对每个元素调用 func 计算数组上的单个值，并在调用之间传递中间结果。
+
+其他：
+Array.isArray(arr) 检查 arr 是否是一个数组。
+arr.some(fn)/arr.every(fn) 检查数组。
+与 map 类似，对数组的每个元素调用函数 fn。如果任何/所有结果为 true，则返回 true，否则返回 false。
+arr.fill(value, start, end) —— 从索引 start 到 end，用重复的 value 填充数组。
+arr.copyWithin(target, start, end) —— 将从位置 start 到 end 的所有元素复制到 自身 的 target 位置（覆盖现有元素）。
 ```
