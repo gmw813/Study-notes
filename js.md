@@ -73,3 +73,7 @@ arr.some(fn)/arr.every(fn) 检查数组。
 arr.fill(value, start, end) —— 从索引 start 到 end，用重复的 value 填充数组。
 arr.copyWithin(target, start, end) —— 将从位置 start 到 end 的所有元素复制到 自身 的 target 位置（覆盖现有元素）。
 ```
+## var let const
+```
+https://www.cnblogs.com/jing-tian/p/11073168.html
+```
