@@ -162,3 +162,10 @@ console.log(names3);
         return document.getElementById(id);
     }
 ```
+## 自动执行函数
+```
+//页面加载时会自动执行
+(function(str){
+     alert(str);   
+})('aaaa')
+```
