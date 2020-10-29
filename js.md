@@ -76,6 +76,80 @@ arr.copyWithin(target, start, end) —— 将从位置 start 到 end 的所有�
 ## var let const 区别（变量提升问题）
 ```
 https://www.cnblogs.com/jing-tian/p/11073168.html
+
+window.onload = function () {
+        var aLi = document.getElementsByTagName('li');
+        for (let i = 0; i < aLi.length; i++) {　　/*将var改为let*/
+            aLi[i].onclick = function () {
+                alert(i);　　　　/*单击任何标签都输出4*/
+            }
+        }
+    }
+    varTest();
+    letTest();
+    function varTest() {
+        var x = 31;
+        if (true) {
+            let x = 71;  // same variable!
+            console.log(x);  // 71
+        }
+        console.log(x);  // 71
+    }
+
+    function letTest() {
+        let x = 31;
+        if (true) {
+            x = 71;  // different variable
+            console.log(x);  // 71
+        }
+        console.log(x);  // 31
+    }
+    /*1.var变量*/
+    console.log(a);  //undefined
+    var a=1;
+ b=10;　
+    console.log(b);  //10
+    var b;
+
+    /*2.let变量*/
+    console.log(c); // Uncaught ReferenceError: c is not defined
+    let c=2;
+    console.log(d); // Uncaught ReferenceError: d is not defined
+    let d;
+
+    var x = 5; // 初始化 x
+    elem = document.getElementById("demo"); // 查找元素 
+    elem.innerHTML = "x 为：" + x + "，y 为：" + y;           // 显示 x 和 y
+    var y = 7; // 初始化 y
+    var a = 10;
+    console.log(window.a); //10
+    console.log(this.a) //10
+
+    let b = 20;
+    console.log(window.b); // undefined
+    console.log(this.b) // undefined
+  /*不会报错，因为names1指向的地址不变，改变的只是内部数据*/
+  const names1 = [];
+      names1[0] = 1;
+      names1[1] = 2;
+      names1[2] = 3;
+      names1[3] = 10;
+console.log(names1);
+
+const names4 = [1, 4];
+    names4[0] = 6;
+    names4[1] = 7;
+    names4[2] = 8;
+console.log(names4); 
+/*出错，因为变量names2指向的地址不能发生改变，应始终指向[]所在的地址,[1,4]与[6,7]不是同一个地址*/
+const names2 = [1, 4];
+    names2 = [6, 7];   //报错
+const names3 = [1, 4];
+    names3[0] = 6;
+    names3[1] = 7;
+console.log(names3);   
+```
+```
 具名函数有变量提升，函数表达式不能变量提升
     const divDom = $('demo');//不会报错,具名函数自动变量提升到最前面
     console.log(divDom);
