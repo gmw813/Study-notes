@@ -76,4 +76,15 @@ arr.copyWithin(target, start, end) —— 将从位置 start 到 end 的所有�
 ## var let const 区别（变量提升问题）
 ```
 https://www.cnblogs.com/jing-tian/p/11073168.html
+具名函数有变量提升，函数表达式不能变量提升
+    const divDom = $('demo');//不会报错,具名函数自动变量提升到最前面
+    console.log(divDom);
+    function $(id){
+        return document.getElementById(id);
+    }
+    
+    const tableDom = _$('demo')//会报错，函数表达式不会变量提升，必须先声明后使用
+    const _$ = function (id){
+        return document.getElementById(id);
+    }
 ```
