@@ -50,3 +50,12 @@ background: radial-gradient(circle at bottom right, #FFFFFF 0, #FFFFFF 0) bottom
   background-repeat: no-repeat;
 }
 ```
+## 右箭头
+```
+写个上边框和右边框，然后旋转45度就是向右的箭头
+width: 7px;
+height: 7px;
+border-top: 2px solid #ffffff;
+border-right: 2px solid #ffffff;
+transform: rotate(45deg);
+```
