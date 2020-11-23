@@ -165,3 +165,104 @@ VM：ViewModel  监听器
 View：页面  页面展示的数据
 
 ```
+## vue-router
+```
+第一种：在index中创建好router实例，直接在main.js中引入
+main.js
+..................................
+import Vue from 'vue'
+import App from './App.vue'
+import Router from 'vue-router'
+import router from './router/index.js'
+Vue.config.productionTip = false
+
+new Vue({
+	router,//错误3：此处引入的实例名必须为router，否则会报错
+  render: h => h(App),
+}).$mount('#app')
+....................................
+index.js
+....................................
+import Vue from 'vue'
+import Router from 'vue-router'
+import HelloWorld from '../components/HelloWorld.vue'
+Vue.use(Router)
+const router = new Router({
+	mode:"history",
+	routes:[
+		{
+			path:'/',
+			redirect:HelloWorld
+		},
+	{
+		path:'/HelloWorld',
+		name:'HelloWorld',
+		component:HelloWorld
+	}
+	]
+})
+export default router   //错误1：export default {router}，页面不显示（export default用法出错：https://blog.csdn.net/hsany330/article/details/81001603）
+......................................
+```
+```
+第二种：将routes单独引入，在main.js中创建router实例
+main.js
+..................................
+import Vue from 'vue'
+import App from './App.vue'
+import Router from 'vue-router'
+import routes from './router/index.js'
+Vue.config.productionTip = false
+
+Vue.use(Router)
+const router = new Router({
+	mode:"history",
+	routes:routes
+})
+
+new Vue({
+	router,
+  render: h => h(App),
+}).$mount('#app')
+....................................
+index.js
+....................................
+import Vue from 'vue'
+import Router from 'vue-router'
+import HelloWorld from '../components/HelloWorld.vue'
+
+const routes = [
+		{
+			path:'/',
+			redirect:HelloWorld
+		},
+	{
+		path:'/HelloWorld',
+		name:'HelloWorld',
+		component:HelloWorld
+	}
+	]
+export default routes  
+......................................
+APP.vue
+......................................
+<template>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+<router-link to="/HelloWorld">你好</router-link>
+<router-view ></router-view> //错误2：不写<router-view>，页面不显示
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'app',
+  components: {},
+  created() {
+  	console.log(this.$route);
+	console.log(this.$router);
+  }
+}
+</script>
+...................................................
+```
