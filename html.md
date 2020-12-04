@@ -162,7 +162,7 @@ Note: 实体名称对大小写敏感！
 ## HTML-swiper组件
 ```
 要点：swiper宽高应设置为100%；swiper-item中的image也应设置宽高（解决图片不显示问题）；
-问题：组件中使用swiper时swiper-item不能使用数组循环
+问题：组件中使用swiper时swiper-item不能使用数组循环（已解决）
 ```
 ```
 <!--Component/swiper.wxml-->
